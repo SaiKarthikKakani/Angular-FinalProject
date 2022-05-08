@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card bg-dark my-5">
+        <div class="card-body">
+          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <label for="leaderId" id="leaderId">Leader:</label>
+    </div>
+    <div class="col-md-2">
+      <form [formGroup]="form">
+        <select formControlName="selected" (change)="update($event)">
+          <option value="default">---
+          </option>
+          <option *ngFor="let leader of leaderInfo">
+            {{leader.leaderId}}
+          </option>
+        </select>
+      </form>
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-outline-primary" type="button" (click)="getAllLeaderIds()">
+        Fetch Leader ID's
+      </button>
+    </div>
+    <div class="col-md-4" *ngIf="isDataRetrieved">
+      <li class="list-inline-item">
+        <a routerLink="/getDetails" class="btn btn-info">Fetch Leader Details</a>
+      </li>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
