@@ -1,0 +1,49 @@
+<div class="card my-5">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-1">
+              <label for="partyId" id="partyId">PartyId:</label>
+            </div>
+            <div class="col-md-2">
+              <input readonly [placeholder]="partyLeader.partyId">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+              <label for="leaderName" id="leaderName">Leader Name:</label>
+            </div>
+            <div class="col-md-2">
+              <input readonly [placeholder]="partyLeader.leaderName">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+              <label for="leaderState" id="leaderState">Leader State:</label>
+            </div>
+            <div class="col-md-2">
+              <input readonly [placeholder]="partyLeader.leaderState">
+            </div>
+        </div>
+        <div class="card-title text-center text-white py-3">Developments</div>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Activity</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Date(mm/YYYY)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eachDevelopment of partyLeaderDevelopment">
+                    <td>{{ eachDevelopment.developmentTitle }}</td>
+                    <td>{{ eachDevelopment.activity }}</td>
+                    <td>{{ eachDevelopment.budget }}</td>
+                    <td>{{ eachDevelopment.state }}</td>
+                    <td>{{ eachDevelopment.activityMonth }}/{{eachDevelopment.activityYear }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
