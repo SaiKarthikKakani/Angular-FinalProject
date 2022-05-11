@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Leader } from './model/leader';
 import { PartyLeaderService } from './service/party-leader-service';
 
@@ -14,15 +15,14 @@ export class AppComponent {
   isDataRetrieved: boolean = false;
   selected!: any;
 
-  form = new FormGroup({
-    selected: new FormControl('', Validators.required)
-  });
-  
-  constructor(private leaderService: PartyLeaderService) {
+  constructor(private leaderService: PartyLeaderService,
+    private route: Router) {
     this.title = 'Angular App - Political Party';
   }
 
   getAllLeaderIds() {
+    this.route.navigate(['/']);
+    
     this.leaderService.findAll().subscribe(data => {
       this.leaderInfo = data;
       this.isDataRetrieved = true;
@@ -30,7 +30,8 @@ export class AppComponent {
   }
 
   update(e: any){
-    this.selected = e.target.value;
+    this.selected = e;
     console.log('The leader id selected is: ' + this.selected);
+    this.route.navigate(['getDetails']);
   }
 }

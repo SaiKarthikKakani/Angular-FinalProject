@@ -13,25 +13,17 @@
       <label for="leaderId" id="leaderId">Leader:</label>
     </div>
     <div class="col-md-2">
-      <form [formGroup]="form">
-        <select formControlName="selected" (change)="update($event)">
-          <option value="default">---
-          </option>
-          <option *ngFor="let leader of leaderInfo">
-            {{leader.leaderId}}
-          </option>
-        </select>
-      </form>
+      <select class="select-option" #mySelect (change)="update(mySelect.value)">
+        <option value="default">---</option>
+        <option *ngFor="let leader of leaderInfo" [value]="leader.leaderId">
+          {{leader.leaderId}}
+        </option>
+      </select>
     </div>
     <div class="col-md-3">
       <button class="btn btn-outline-primary" type="button" (click)="getAllLeaderIds()">
         Fetch Leader ID's
       </button>
-    </div>
-    <div class="col-md-4" *ngIf="isDataRetrieved">
-      <li class="list-inline-item">
-        <a routerLink="/getDetails" class="btn btn-info">Fetch Leader Details</a>
-      </li>
     </div>
   </div>
   <router-outlet></router-outlet>
