@@ -31,7 +31,6 @@ export class AppComponent {
 
   update(e: any){
     this.selected = e;
-    console.log('The leader id selected is: ' + this.selected);
     this.route.navigate(['getDetails']);
   }
 }
